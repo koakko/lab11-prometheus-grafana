@@ -51,22 +51,22 @@ pipeline {
                     }
                 }
             }
-            stage {
+            stage('deploy frontend') {
                 agent {
                     label 'frontend-agent'
                 }
                 steps {
                     sh '''
-                        if [ "$(docker ps -a -q -f name=cfend)" ];
+                        if [ "$(docker ps -a -q -f name=cfend)" ]; then
                             docker rmi -f koak/lab11-jk-mt:frontend || true
                             docker stop cfendex || true
-                            docker stop cfendex || true
+                            docker rm -f cfendex || true
                             docker stop cfend
                             docker rm -f cfend
                         fi
                             docker logout
                             docker login -u $DH_USR -p $DH_PSW
-                            docker pull koak/lab11-jk-mt-frontend
+                            docker pull koak/lab11-jk-mt:frontend
                             docker run -d -p 8181:80 --name cfend koak/lab11-jk-mt:frontend
                             docker run -d -p 9113:9113 --name cfendex nginx/nginx-prometheus-exporter:latest --nginx.scrape-uri=http://my_frontend/nginx_status 
                     '''
@@ -82,11 +82,11 @@ pipeline {
                             docker rmi -f koak/lab11-jk-mt:backend || true
                             docker stop cbend
                             docker rm -f cbend
-                        if
+                        fi
                             docker logout
                             docker login -u $DH_USR -p $DH_PSW
                             docker pull koak/lab11-jk-mt:backend
-                            docker run -d -p 5000:5000 --name cbend oak/lab11-jk-mt:backend
+                            docker run -d -p 5000:5000 --name cbend koak/lab11-jk-mt:backend
                     '''
                 }
             }
