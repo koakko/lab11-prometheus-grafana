@@ -15,7 +15,7 @@
         .container { max-width: 1000px; }
 
         .btn-primary {
-            background-color: #00b4db;
+            background-color: #000000;
             border: none;
             transition: all 0.3s ease;
             margin: 0 20px;
@@ -28,7 +28,7 @@
         }
 
         .btn-api {
-            background-color: #f84652;
+            background-color: #FEF9E4;
             border: none;
             transition: all 0.3s ease;
             margin: 0 20px;
@@ -80,13 +80,13 @@
 
         .zerolayer {
             font-weight: bold;
-            color: rgb(220, 6, 6);
+            color: #FECF14;
         }
 
         .hover-gradient { stroke: url(#gradient); }
 
         .welcome-container {
-            background: #fff;
+            background: #FDD949;
             max-width: 600px;
             padding: 3rem;
             border-radius: 15px;
@@ -105,7 +105,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #b26bf8, #0d0d99);
+            background: linear-gradient(135deg, #AA6C39, #CFB53B);
         }
 
         .divider {
@@ -180,8 +180,8 @@
                         </feMerge>
                     </filter>
                 </defs>
-                <text class="grok-text" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">SHAR_THU</text>
-                <text class="grok-text hover-gradient" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" mask="url(#dynamicMask)">SHAR_THU</text>
+                <text class="grok-text" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">AUNG_KO</text>
+                <text class="grok-text hover-gradient" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" mask="url(#dynamicMask)">AUNG_KO</text>
             </svg>
             <div class="typewriter">
                 <h1>Happy Coding with <span class="zerolayer"> Zero Layer Team </span></h1>
@@ -228,7 +228,7 @@
 
         // Fetch API
         document.getElementById('callBackendBtn').addEventListener('click', () => {
-            fetch('http://localhost:5000/api') 
+            fetch('http://192.168.0.182:5000/api') 
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('message').textContent = data.message;
